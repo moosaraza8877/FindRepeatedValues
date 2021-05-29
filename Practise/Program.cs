@@ -10,22 +10,40 @@ namespace Practise
     {
         static void Main(string[] args)
         {
-            int n, b, s, p, r;
-            s = 0;
-            p = 1;
-            Console.Write("Enter the Binary Number, 0's and 1's: ");
-            n = Convert.ToInt32(Console.ReadLine());
-            b = n;
-            while (n > 0)
+            int menu = 1;
+            string str1, str2;
+            Console.WriteLine("***** PALINDROME DETECTOR *****");
+            while (menu == 1)
             {
-                r = n % 10;
-                n = n / 10;
-                s = s + r * p;
-                p = p * 2;
+                Console.WriteLine();
+                Console.Write("Enter any word: ");
+                str1 = Console.ReadLine();
+                if (str1 == "/END")
+                    break;
+                str2 = null;
+                for (int i = str1.Length - 1; i >= 0; i--)
+                {
+                    str2 = str2 + str1.Substring(i, 1);
+                }
+                if (str1 == str2)
+                {
+                    Console.WriteLine("It's a Palindrome!");
+                }
+                else
+                    Console.WriteLine("It is not a Palindrome!");
+                Console.WriteLine();
+                Console.WriteLine("X----------X----------X");
+                Console.WriteLine();
+                Console.WriteLine("Are you want to check it again?");
+                Console.Write("Press 1 for start again & 0 for exit: ");
+                menu = Convert.ToInt32(Console.ReadLine());
+                if (menu == 1)
+                    continue;
+                else
+                    break;
             }
-            Console.WriteLine("The Binary Number is: {0}", b);
-            Console.WriteLine("It's Decimal Equivalent Number is: {0}", s);
-            Console.WriteLine("  ********** THE END **********  ");
+            Console.WriteLine();
+            Console.WriteLine("Thank you for using our detector!");
         }
     }
 }
